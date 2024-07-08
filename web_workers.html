@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="./web_workers_test.js" defer></script>
-    <script type="module" src="./web_workers.js" defer></script>
+    <!-- <script type="module" src="./web_workers_test.js" defer></script> -->
     <title>Docment</title>
 </head>
 <body>
-    <p id="result"></p>
+
+    <p>Counter goes here: <output id="result"></output></p>
 </body>
+<script>
+    debugger
+    let worker;
+if (typeof(worker) === "object") {
+
+} else {
+      worker = new Worker("./web_workers.js");
+
+}
+
+
+worker.onmessage = (event) => {
+  document.getElementById("result").innerHTML = event.data
+  console.log("entra")
+};
+</script>
 </html>
