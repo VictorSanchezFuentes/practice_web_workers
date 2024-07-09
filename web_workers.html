@@ -11,19 +11,24 @@
     <p>Counter goes here: <output id="result"></output></p>
 </body>
 <script>
-    debugger
     let worker;
-if (typeof(worker) === "object") {
+    if (typeof(Worker) !== "undefined") {
+        if (typeof(worker) === "object") {
 
-} else {
-      worker = new Worker("./web_workers.js");
+        } else {
+            worker = new Worker("./web_workers.js");
 
-}
+        }
 
 
-worker.onmessage = (event) => {
-  document.getElementById("result").innerHTML = event.data
-  console.log("entra")
-};
+        worker.addEventListener('message', (event) => {
+            document.getElementById("result").innerHTML = event.data
+        });
+    } else {
+    document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";
+  }
+
+
+  setTimeout(() => worker.terminate(), 10000);
 </script>
 </html>

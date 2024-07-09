@@ -1,10 +1,9 @@
 let i = 0;
 
-let timedCount = () =>  {
+let timedCount = setInterval(() => {
   console.log(i)
   i ++;
   postMessage(i);
-  setTimeout("timedCount()",500);
-}
+}, 500)
 
 timedCount;
