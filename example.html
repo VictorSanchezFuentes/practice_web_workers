@@ -8,14 +8,15 @@
 <button onclick="stopWorker()">Stop Worker</button>
 
 <script>
-    debugger
 let w;
 
 function startWorker() {
   if(typeof(w) == "undefined") {
     w = new Worker("demo_workers.js");
   }
+
   w.onmessage = function(event) {
+    console.log(event);
     document.getElementById("result").innerHTML = event.data;
   };
 }

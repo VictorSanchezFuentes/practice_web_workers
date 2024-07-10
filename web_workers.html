@@ -22,7 +22,7 @@
 
 
         worker.addEventListener('message', (event) => {
-            document.getElementById("result").innerHTML = event.data
+            document.getElementById("result").innerHTML = event.data.hour;
         });
     } else {
     document.getElementById("result").innerHTML = "Sorry! No Web Worker support.";

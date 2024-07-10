@@ -1,8 +1,14 @@
-let i = 0;
+let i = {
+  number: 0,
+  hour: new Date()
+};
+
+const now = new Date();
 
 let timedCount = setInterval(() => {
   console.log(i)
-  i ++;
+  i.number++;
+  i.hour= new Date();
   postMessage(i);
 }, 500)
 
